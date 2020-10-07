@@ -62,7 +62,7 @@ def load_data(city, month, day):
     # filter by month
     if month != 'all':
         months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month)
+        month = months.index(month) + 1
         df = df[df['month'] == month]
 
     # filter by day
@@ -166,7 +166,22 @@ def user_stats(df, city):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
         
+def show_data(df):
+    """ Display raw data."""
 
+    i = 0
+    # Ask user to check raw data
+    while (True):
+        check_raw = input('\nWould you like to see 5 lines of raw data ? Enter yes or no.\n')
+        while (check_raw.lower() != 'yes' and check_raw.lower() != 'no'):
+            check_raw = input('\nWould you like to see 5 lines of raw data ? Enter yes or no.\n')
+
+        if (check_raw.lower() == 'no'):
+            break
+
+        if (check_raw.lower() == 'yes'):
+            print(df.iloc[i : i+5])
+            i += 5
 
 def main():
     while True:
@@ -177,14 +192,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df, city)
-
-        # Ask user to check raw data
-        check_raw = input('\nWould you like to see 5 lines of raw data ? Enter yes or no.\n')
-        while (check_raw.lower() != 'yes' and check_raw.lower() != 'no'):
-            check_raw = input('\nWould you like to see 5 lines of raw data ? Enter yes or no.\n')
-
-        if (check_raw.lower() == 'yes'):
-            print(df.head(5))
+        show_data(df) 
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':

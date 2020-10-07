@@ -9,3 +9,6 @@ https://stackoverflow.com/questions/50848454/pulling-most-frequent-combination-f
 
 - pandas: Get the number of rows, columns, all elements (size) of DataFrame
 https://note.nkmk.me/en/python-pandas-len-shape-size/
+
+- To display Pandas DataFrame using iloc
+https://www.shanelynn.ie/select-pandas-dataframe-rows-and-columns-using-iloc-loc-and-ix/#iloc-selection
